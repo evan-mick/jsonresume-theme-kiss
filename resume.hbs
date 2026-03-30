@@ -142,37 +142,17 @@
     {{#each basics.profiles}}
       {{#unless @first}} | {{/unless}}<a href="{{url}}" target="_blank">{{network}}</a>
     {{/each}}
-    {{#if basics.url}} | <a href="{{basics.url}}" target="_blank">{{basics.url}}</a>{{/if}}
+    {{#if basics.url}} | <a href="{{basics.url}}" target="_blank">
+      {{#if basics.urlNameOverride}} {{basics.urlNameOverride}} 
+      {{else}} {{basics.url}} {{/if}}
+    </a> {{/if}}
   </div>
   {{/if}}
 </div>
 
-<!-- EDUCATION -->
-{{#if education}}
-<div class="section-title">Education</div>
-
-{{#each education}}
-<div class="entry">
-  <div class="entry-header">
-    <div class="entry-left">
-      {{institution}}{{#if studyType}}, <span class="edu-degree">{{studyType}}{{#if area}} {{area}}{{/if}}{{#if gpa}}, GPA {{gpa}}{{/if}}</span>{{/if}}
-    </div>
-    <div class="entry-right">
-      {{#if startDate}}{{startDate}} – {{/if}}{{endDate}}
-    </div>
-  </div>
-  {{#if courses}}
-  <div class="courses-line">
-    <span class="courses-label">Courses:</span> {{join courses ", "}}
-  </div>
-  {{/if}}
-</div>
-{{/each}}
-{{/if}}
-
-<!-- RELEVANT EXPERIENCE -->
+<!-- EXPERIENCE -->
 {{#if work}}
-<div class="section-title">Relevant Experience</div>
+<div class="section-title">Experience</div>
 
 {{#each work}}
 <div class="entry">
@@ -215,6 +195,29 @@
     <li>{{markdown this}}</li>
     {{/each}}
   </ul>
+  {{/if}}
+</div>
+{{/each}}
+{{/if}}
+
+<!-- EDUCATION -->
+{{#if education}}
+<div class="section-title">Education</div>
+
+{{#each education}}
+<div class="entry">
+  <div class="entry-header">
+    <div class="entry-left">
+      {{institution}}{{#if studyType}}, <span class="edu-degree">{{studyType}}{{#if area}} {{area}}{{/if}}{{#if gpa}}, GPA {{gpa}}{{/if}}</span>{{/if}}
+    </div>
+    <div class="entry-right">
+      {{#if startDate}}{{startDate}} – {{/if}}{{endDate}}
+    </div>
+  </div>
+  {{#if courses}}
+  <div class="courses-line">
+    <span class="courses-label">Courses:</span> {{join courses ", "}}
+  </div>
   {{/if}}
 </div>
 {{/each}}

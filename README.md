@@ -1,4 +1,4 @@
-## Keep it simple, stupid. 
+## K.I.S.S: Keep it simple, stupid. 
 
 An incredibly simple resume template meant to be very straightforward, minimal, but effective.
 Inspired from docx based resume template given to me by the career advisory group at Brown. 
