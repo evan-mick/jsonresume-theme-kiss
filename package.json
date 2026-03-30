@@ -1,6 +1,6 @@
 {
   "name": "jsonresume-theme-kiss",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "description": "Keep it simple, stupid. Basic times new roman template",
   "main": "index.js",
   "keywords": [
