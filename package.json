@@ -1,0 +1,15 @@
+{
+  "name": "jsonresume-theme-kiss",
+  "version": "1.0.0",
+  "description": "Keep it simple, stupid. Basic times new roman template",
+  "main": "index.js",
+  "keywords": [
+    "jsonresume",
+    "jsonresume-theme"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "markdown-it": "^14.1.1"
+  }
+}

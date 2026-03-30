@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>{{basics.name}} – Resume</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10pt;
+    line-height: 1.35;
+    padding: 0.4in 0.5in;
+    max-width: 8.5in;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20pt;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+  }
+
+  .header .contact-line {
+    font-size: 10pt;
+    color: #000;
+  }
+
+  /*.header .contact-line a {
+    color: #000;
+    text-decoration: underline;
+  }*/
+
+  hr {
+    border: none;
+    border-top: 4px solid #000;
+    margin: 6px 0 8px 0;
+  }
+
+  /* ── SECTION HEADING ── */
+  .section-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #000;
+    padding-bottom: 1px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  /* ── ENTRY ROWS ── */
+  .entry {
+    margin-bottom: 6px;
+  }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .entry-left {
+    font-weight: bold;
+    font-size: 10pt;
+  }
+
+  .entry-right {
+    font-size: 10pt;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ── BULLETS ── */
+  ul {
+    padding-left: 20px;
+    margin: 2px 0 0 0;
+  }
+
+  ul li {
+    font-size: 10pt;
+    margin-bottom: 1px;
+    line-height: 1.35;
+  }
+
+  /* ── EDUCATION specifics ── */
+  .edu-degree {
+    font-weight: normal;
+  }
+
+  .courses-line {
+    font-size: 10pt;
+    margin-top: 2px;
+  }
+
+  .courses-line .courses-label {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  /* ── SKILLS ── */
+  .skills-line {
+    font-size: 10pt;
+    margin-bottom: 3px;
+    line-height: 1.4;
+  }
+
+  .skills-line .skills-label {
+    font-weight: bold;
+  }
+
+  @media print {
+    body {
+      padding: 0.25in 0.25in;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>{{basics.name}}</h1>
+  <div class="contact-line">
+    {{#if basics.location.city}}{{basics.location.city}}{{/if}}{{#if basics.phone}} | {{basics.phone}}{{/if}}{{#if basics.email}} | {{basics.email}}{{/if}}
+  </div>
+  {{#if basics.profiles}}
+  <div class="contact-line">
+    {{#each basics.profiles}}
+      {{#unless @first}} | {{/unless}}<a href="{{url}}" target="_blank">{{network}}</a>
+    {{/each}}
+    {{#if basics.url}} | <a href="{{basics.url}}" target="_blank">{{basics.url}}</a>{{/if}}
+  </div>
+  {{/if}}
+</div>
+
+<!-- EDUCATION -->
+{{#if education}}
+<div class="section-title">Education</div>
+
+{{#each education}}
+<div class="entry">
+  <div class="entry-header">
+    <div class="entry-left">
+      {{institution}}{{#if studyType}}, <span class="edu-degree">{{studyType}}{{#if area}} {{area}}{{/if}}{{#if gpa}}, GPA {{gpa}}{{/if}}</span>{{/if}}
+    </div>
+    <div class="entry-right">
+      {{#if startDate}}{{startDate}} – {{/if}}{{endDate}}
+    </div>
+  </div>
+  {{#if courses}}
+  <div class="courses-line">
+    <span class="courses-label">Courses:</span> {{join courses ", "}}
+  </div>
+  {{/if}}
+</div>
+{{/each}}
+{{/if}}
+
+<!-- RELEVANT EXPERIENCE -->
+{{#if work}}
+<div class="section-title">Relevant Experience</div>
+
+{{#each work}}
+<div class="entry">
+  <div class="entry-header">
+    <div class="entry-left">
+      {{name}}{{#if position}}, <span style="font-weight:normal;">{{position}}</span>{{/if}}
+    </div>
+    <div class="entry-right">
+      {{#if location}}{{location}} | {{/if}}{{#if startDate}}{{startDate}} – {{/if}}{{endDate}}
+    </div>
+  </div>
+  {{#if highlights}}
+  <ul>
+    {{#each highlights}}
+    <li>{{markdown this}}</li>
+    {{/each}}
+  </ul>
+  {{/if}}
+</div>
+{{/each}}
+{{/if}}
+
+<!-- PROJECTS -->
+{{#if projects}}
+<div class="section-title">Projects</div>
+
+{{#each projects}}
+<div class="entry">
+  <div class="entry-header">
+    <div class="entry-left">
+      {{name}}{{#if description}}, <span style="font-weight:normal;">{{description}}</span>{{/if}}
+    </div>
+    <div class="entry-right">
+      {{#if startDate}}{{startDate}}{{#if endDate}} – {{endDate}}{{/if}}{{else}}{{endDate}}{{/if}}
+    </div>
+  </div>
+  {{#if highlights}}
+  <ul>
+    {{#each highlights}}
+    <li>{{markdown this}}</li>
+    {{/each}}
+  </ul>
+  {{/if}}
+</div>
+{{/each}}
+{{/if}}
+
+<!-- SKILLS AND INTERESTS -->
+{{#if skills}}
+<div class="section-title">Skills and Interests</div>
+
+{{#each skills}}
+<div class="skills-line">
+  <span class="skills-label">{{name}}:</span> {{join keywords ", "}}
+</div>
+{{/each}}
+{{/if}}
+
+</body>
+</html>
