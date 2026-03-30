@@ -6,3 +6,6 @@ Not currently feature complete (we need to add support for more sections).
 The source is also intended to be quite straightforward, the hbs file and repo should be very simple to read, modify, and make changes to.
 
 Optimized for my own use cases and PDF export (though it works fine with websites too).
+
+NPM repo: https://www.npmjs.com/package/jsonresume-theme-kiss
+GitHub repo: https://github.com/evan-mick/jsonresume-theme-kiss
