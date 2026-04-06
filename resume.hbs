@@ -166,7 +166,7 @@
 <div class="entry">
   <div class="entry-header">
     <div class="entry-left">
-      {{name}}{{#if description}}, <span style="font-weight:normal;">{{description}}</span>{{/if}}
+      {{name}}{{#if url}}, <a href="{{url}}" target="_blank">Project Link</a>{{/if}}{{#if description}}, <span style="font-weight:normal;">{{description}}</span>{{/if}}
     </div>
     <div class="entry-right">
       {{#if startDate}}{{startDate}}{{#if endDate}} – {{endDate}}{{/if}}{{else}}{{endDate}}{{/if}}
